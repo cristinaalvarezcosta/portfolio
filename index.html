@@ -744,13 +744,70 @@
       .finder-window{background:#fff}
       .finder-window .personal-folder{color:#420d19}
     }
+    /* New Message compose window: opens in-page when an email link is tapped, so the click always does something even where the host blocks mailto: hand-off. */
+    #mail-dialog{width:min(600px,calc(100% - 28px));border-radius:16px;overflow:hidden;background:#fffdf9;color:#420d19}
+    .mail-head{display:flex;align-items:center;gap:8px;padding:13px 16px;background:linear-gradient(180deg,#f9e8ee,#f6dce6);border-bottom:1px solid #eccdd9}
+    .mail-dot{width:13px;height:13px;border-radius:50%;border:0;padding:0;flex:none}
+    .mail-dot.red{background:#ff5f57;cursor:pointer;box-shadow:inset 0 0 0 1px rgba(120,20,40,.18)}
+    .mail-dot.red:hover{filter:brightness(.92)}
+    .mail-dot.yellow{background:#febc2e;box-shadow:inset 0 0 0 1px rgba(120,80,0,.18)}
+    .mail-dot.green{background:#28c840;box-shadow:inset 0 0 0 1px rgba(0,90,20,.18)}
+    .mail-title{flex:1;text-align:center;font-weight:700;font-size:15px;margin-right:55px;color:#420d19}
+    .mail-row{display:flex;align-items:baseline;gap:14px;padding:13px 20px;border-bottom:1px solid #f0d7e0;font-size:16px}
+    .mail-row label{flex:none;width:58px;color:#a08a91;font-size:15px}
+    .mail-row .mail-to{font-weight:600}
+    .mail-row input{flex:1;min-width:0;border:0;background:transparent;color:inherit;font:inherit;padding:0;outline:none}
+    .mail-body{display:block;width:100%;min-height:190px;border:0;resize:vertical;background:transparent;color:inherit;font:inherit;font-size:16px;line-height:1.55;padding:18px 20px 8px;outline:none}
+    .mail-actions{display:flex;gap:12px;flex-wrap:wrap;padding:14px 20px 22px}
+    .mail-send{display:inline-flex;align-items:center;gap:9px;background:var(--smoothie);color:#fff5ef;text-decoration:none;font-weight:800;font-size:16px;padding:13px 24px;border:0;border-radius:999px;box-shadow:0 8px 18px rgba(116,30,49,.28);transition:.2s;cursor:pointer;font-family:inherit}
+    .mail-send:hover{background:var(--berry)}
+    .mail-send svg{flex:none}
+    .mail-linkedin{display:inline-flex;align-items:center;gap:7px;background:#fffdf9;color:#420d19;text-decoration:none;font-weight:600;font-size:16px;padding:13px 22px;border-radius:999px;border:1px solid #eccdd9;transition:.2s}
+    .mail-linkedin:hover{border-color:var(--smoothie);color:var(--smoothie)}
+    .mail-status{margin:0 20px 22px;padding:14px 16px;background:#fdf0f4;border:1px solid #eccdd9;border-radius:10px}
+    .mail-status p{margin:0 0 10px;font-size:14px;line-height:1.5}
+    .mail-alt-row{display:flex;gap:8px;flex-wrap:wrap}
+    .mail-alt{display:inline-flex;align-items:center;background:#fffdf9;color:#420d19;text-decoration:none;font-weight:600;font-size:13.5px;padding:8px 14px;border-radius:999px;border:1px solid #eccdd9;cursor:pointer;font-family:inherit;transition:.2s}
+    .mail-alt:hover{border-color:var(--smoothie);color:var(--smoothie)}
+
+    @media(prefers-color-scheme:dark){
+      #mail-dialog{background:#fffdf9;color:#420d19}
+      .mail-row input,.mail-body{color:#420d19}
+    }
+    /* Contact window in the footer: clean white “New Message” card, always light like the reference. */
+    .contact-window{max-width:600px;margin:0 auto 48px;background:#fff;color:#2b2326;border-radius:18px;overflow:hidden;box-shadow:0 24px 55px rgba(20,3,9,.35),0 3px 0 rgba(20,3,9,.12);text-align:left}
+    .contact-window-head{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#f4eeee;border-bottom:1px solid #e9e0e0}
+    .cw-dot{width:12px;height:12px;border-radius:50%;flex:none}
+    .cw-dot.red{background:#ff5f57;box-shadow:inset 0 0 0 1px rgba(120,20,40,.18)}
+    .cw-dot.yellow{background:#febc2e;box-shadow:inset 0 0 0 1px rgba(120,80,0,.18)}
+    .cw-dot.green{background:#28c840;box-shadow:inset 0 0 0 1px rgba(0,90,20,.18)}
+    .cw-title{flex:1;text-align:center;font-weight:600;font-size:14.5px;color:#453a3e;margin-right:52px}
+    .contact-window-body{padding:26px 32px 32px}
+    .cw-fields{border-bottom:1px solid #ece4e4;padding-bottom:16px;margin-bottom:18px}
+    .cw-field{margin:0 0 9px;font-size:17px;line-height:1.35;color:#2b2326}
+    .cw-field:last-child{margin-bottom:0}
+    .cw-field strong{font-weight:700}
+    .cw-intro{margin:0 0 26px;font-size:16.5px;line-height:1.5;color:#3a3236}
+    .cw-rows{display:grid;gap:14px;margin-bottom:30px}
+    .cw-row{display:grid;grid-template-columns:112px minmax(0,1fr);gap:16px;align-items:baseline}
+    .cw-label{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:#8d8387}
+    .cw-link{color:#bf3a6b;text-decoration:underline;text-underline-offset:3px;font-size:16px;overflow-wrap:anywhere}
+    .cw-link:hover,.cw-link:focus-visible{color:#8f2350}
+    .cw-email-btn{display:inline-flex;align-items:center;background:#1d1a1b;color:#fff;text-decoration:none;font-weight:700;font-size:15.5px;line-height:1;padding:14px 27px;border-radius:999px;transition:background .2s,transform .2s}
+    .cw-email-btn:hover,.cw-email-btn:focus-visible{background:#000;transform:translateY(-1px)}
+    @media(max-width:700px){.contact-window{margin-bottom:40px}.contact-window-body{padding:22px 20px 26px}.cw-row{grid-template-columns:84px minmax(0,1fr);gap:10px}.cw-link{font-size:14.5px}.cw-field{font-size:16px}.cw-intro{font-size:15.5px}}
+    /* “Contact me” in the top nav opens this dialog in place (same New Message card as the footer), instead of jumping down the page to the #contact anchor. */
+    #contact-dialog{width:min(600px,calc(100% - 28px));padding:0;border:0;border-radius:18px;background:transparent;box-shadow:none;overflow:hidden}
+    #contact-dialog .contact-window{max-width:none;margin:0}
+    #contact-dialog button.cw-dot{border:0;padding:0;cursor:pointer}
+    #contact-dialog button.cw-dot:hover{filter:brightness(.92)}
   </style>
 </head>
 <body>
   <div class="topline"></div>
   <nav class="wrap" aria-label="Portfolio navigation">
     <span class="mini">Barcelona</span>
-    <div class="navlinks mini" aria-label="Portfolio sections"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#contact">Contact me</a></div>
+    <div class="navlinks mini" aria-label="Portfolio sections"><a href="#work">Work</a><a href="#experience">Experience</a><a href="#about">About</a><a href="#contact" id="contact-open">Contact me</a></div>
   </nav>
 
   <main>
@@ -801,7 +858,7 @@
           <h2>Design meets <em>industry.</em></h2>
           <p>Industrial Design Engineering graduate with experience in process optimization, technical documentation and cross-departmental collaboration in the pharmaceutical sector. I bring organization, planning, data-driven decisions and practical problem-solving to every brief.</p>
           <div class="contact-list" id="contact">
-            <a href="mailto:crisalvcos23@gmail.com"><b>Email</b><span>crisalvcos23@gmail.com ↗</span></a>
+            <a href="mailto:crisalvcos23@gmail.com?subject=Hello%20Cristina%20%E2%80%94%20about%20your%20portfolio&body=Hi%20Cristina%2C%0A%0AI%20saw%20your%20portfolio%20and%20I%27d%20love%20to%20talk%20about%E2%80%A6"><b>Email</b><span>crisalvcos23@gmail.com ↗</span></a>
             <span><b>Location</b><span>Barcelona</span></span>
             <a href="https://www.linkedin.com/in/cristina-alvarez-costa/" target="_blank" rel="noopener noreferrer"><b>LinkedIn</b><span>View profile ↗</span></a>
           </div>
@@ -911,7 +968,53 @@
 
   </main>
 
-  <footer><div class="wrap foot"><strong>Let’s make<br><em>good things.</em></strong><div><div class="foot-links mini"><a href="mailto:crisalvcos23@gmail.com">Email</a><a href="https://www.linkedin.com/in/cristina-alvarez-costa/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="#work">Back to work ↑</a></div><span class="foot-location mini">Barcelona</span></div></div></footer>
+  <footer><div class="wrap">
+    <div class="foot"><strong>Let’s make<br><em>good things.</em></strong><div><div class="foot-links mini"><a href="mailto:crisalvcos23@gmail.com?subject=Hello%20Cristina%20%E2%80%94%20about%20your%20portfolio&body=Hi%20Cristina%2C%0A%0AI%20saw%20your%20portfolio%20and%20I%27d%20love%20to%20talk%20about%E2%80%A6">Email</a><a href="https://www.linkedin.com/in/cristina-alvarez-costa/" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="#work">Back to work ↑</a></div><span class="foot-location mini">Barcelona</span></div></div>
+  </div></footer>
+
+  <dialog id="contact-dialog" aria-label="Contact details for Cristina Álvarez">
+    <div class="contact-window">
+      <div class="contact-window-head"><button class="cw-dot red" type="button" id="contact-close" aria-label="Close contact window"></button><span class="cw-dot yellow" aria-hidden="true"></span><span class="cw-dot green" aria-hidden="true"></span><span class="cw-title">New Message</span></div>
+      <div class="contact-window-body">
+        <div class="cw-fields">
+          <p class="cw-field"><strong>To:</strong> Cristina Álvarez</p>
+          <p class="cw-field"><strong>Subject:</strong> Let’s make good things</p>
+        </div>
+        <p class="cw-intro">Open to design projects and creative collaborations.</p>
+        <div class="cw-rows">
+          <div class="cw-row"><span class="cw-label">Email</span><a class="cw-link" href="mailto:crisalvcos23@gmail.com?subject=Hello%20Cristina%20%E2%80%94%20about%20your%20portfolio&body=Hi%20Cristina%2C%0A%0AI%20saw%20your%20portfolio%20and%20I%27d%20love%20to%20talk%20about%E2%80%A6">crisalvcos23@gmail.com</a></div>
+          <div class="cw-row"><span class="cw-label">LinkedIn</span><a class="cw-link" href="https://www.linkedin.com/in/cristina-alvarez-costa/" target="_blank" rel="noopener noreferrer">Cristina Álvarez Costa</a></div>
+        </div>
+        <a class="cw-email-btn" href="mailto:crisalvcos23@gmail.com?subject=Hello%20Cristina%20%E2%80%94%20about%20your%20portfolio&body=Hi%20Cristina%2C%0A%0AI%20saw%20your%20portfolio%20and%20I%27d%20love%20to%20talk%20about%E2%80%A6">Email me</a>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="mail-dialog" aria-labelledby="mail-title">
+    <div class="mail-head">
+      <button class="mail-dot red" type="button" id="mail-close" aria-label="Close message window"></button>
+      <span class="mail-dot yellow" aria-hidden="true"></span>
+      <span class="mail-dot green" aria-hidden="true"></span>
+      <span class="mail-title" id="mail-title">New Message</span>
+    </div>
+    <div class="mail-row"><label>To:</label><span class="mail-to">crisalvcos23@gmail.com</span></div>
+    <div class="mail-row"><label for="mail-subject">Subject:</label><input id="mail-subject" type="text" value="Hello Cristina — about your portfolio" autocomplete="off"></div>
+    <textarea class="mail-body" id="mail-body" aria-label="Message">Hi Cristina,
+
+I saw your portfolio and I'd love to talk about…</textarea>
+    <div class="mail-actions">
+      <button class="mail-send" id="mail-send" type="button">Send <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true" focusable="false"><path d="M3.4 20.4 21.85 12 3.4 3.6l-.01 6.53L14 12 3.39 13.87z"/></svg></button>
+      <a class="mail-linkedin" href="https://www.linkedin.com/in/cristina-alvarez-costa/" target="_blank" rel="noopener noreferrer">LinkedIn <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17 17 7"/><path d="M8.5 7H17v8.5"/></svg></a>
+    </div>
+    <div class="mail-status" id="mail-status" hidden role="status" aria-live="polite">
+      <p>Choose how you’d like to send it:</p>
+      <div class="mail-alt-row">
+        <a class="mail-alt" id="mail-gmail" href="#" target="_blank" rel="noopener noreferrer">Open in Gmail ↗</a>
+        <a class="mail-alt" id="mail-outlook" href="#" target="_blank" rel="noopener noreferrer">Open in Outlook ↗</a>
+        <button class="mail-alt" id="mail-copy" type="button">Copy email address</button>
+      </div>
+    </div>
+  </dialog>
 
   <dialog id="project-dialog" aria-labelledby="modal-title"><div class="modal-top"><span class="mini" id="modal-label"></span><button class="close" aria-label="Close project">×</button></div><div class="case"><div><h2 id="modal-title"></h2><div class="tags" id="modal-tags"></div><div class="case-copy" id="modal-copy"></div></div><div class="gallery" id="modal-gallery" role="region" aria-label="Project image carousel"><div class="gallery-stage"><img id="modal-image" class="is-active" alt=""><img id="modal-image-next" alt=""><button class="gallery-prev" type="button" aria-label="Show previous project image">‹</button><button class="gallery-next" type="button" aria-label="Show next project image">›</button><span class="gallery-count" aria-live="polite"></span></div></div></div><div class="case-extras" id="modal-extras" hidden></div></dialog>
 
@@ -1009,6 +1112,52 @@
     document.querySelector('.close').addEventListener('click',closeDialog);dialog.addEventListener('click',e=>{if(e.target===dialog)closeDialog()});dialog.addEventListener('close',()=>document.body.style.overflow='');
     document.addEventListener('keydown',e=>{if(dialog.open){if(e.key==='ArrowRight')nextImage();if(e.key==='ArrowLeft')prevImage()}});
     document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(b=>b.setAttribute('aria-pressed','false'));btn.setAttribute('aria-pressed','true');const f=btn.dataset.filter;document.querySelectorAll('.project').forEach(card=>card.hidden=f!=='all'&&!card.dataset.cat.includes(f))}));
+    const mailDialog=document.querySelector('#mail-dialog'),mailSubject=document.querySelector('#mail-subject'),mailBody=document.querySelector('#mail-body'),mailSend=document.querySelector('#mail-send');
+    const contactDialog=document.querySelector('#contact-dialog');
+    const mailStatus=document.querySelector('#mail-status'),mailGmail=document.querySelector('#mail-gmail'),mailOutlook=document.querySelector('#mail-outlook'),mailCopy=document.querySelector('#mail-copy');
+    function syncMailHref(){
+      const subject=encodeURIComponent(mailSubject.value),body=encodeURIComponent(mailBody.value);
+      mailGmail.href=`https://mail.google.com/mail/?view=cm&fs=1&to=crisalvcos23@gmail.com&su=${subject}&body=${body}`;
+      mailOutlook.href=`https://outlook.live.com/mail/0/deeplink/compose?to=crisalvcos23@gmail.com&subject=${subject}&body=${body}`;
+    }
+    mailSubject.addEventListener('input',syncMailHref);
+    mailBody.addEventListener('input',syncMailHref);
+    syncMailHref();
+    mailSend.addEventListener('click',()=>{
+      syncMailHref();
+      mailStatus.hidden=false;
+      mailStatus.scrollIntoView({block:'nearest'});
+    });
+    mailCopy.addEventListener('click',async()=>{
+      const email='crisalvcos23@gmail.com';
+      const confirmCopied=()=>{const original='Copy email address';mailCopy.textContent='Copied ✓';setTimeout(()=>{mailCopy.textContent=original},1800)};
+      let copied=false;
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        try{await navigator.clipboard.writeText(email);copied=true}catch(e){copied=false}
+      }
+      if(!copied){
+        const ta=document.createElement('textarea');
+        ta.value=email;
+        ta.setAttribute('readonly','');
+        ta.style.cssText='position:fixed;top:0;left:0;width:2em;height:2em;padding:0;border:0;opacity:0';
+        mailDialog.appendChild(ta);
+        ta.focus();
+        ta.select();
+        ta.setSelectionRange(0,email.length);
+        try{copied=document.execCommand('copy')}catch(e){copied=false}
+        ta.remove();
+      }
+      if(copied)confirmCopied();
+    });
+    document.querySelectorAll('a[href^="mailto:"]:not(#mail-send)').forEach(link=>link.addEventListener('click',e=>{if(link.closest('#mail-dialog'))return;e.preventDefault();if(!mailDialog.open){mailStatus.hidden=true;mailDialog.showModal();document.body.style.overflow='hidden'}}));
+    document.querySelector('#mail-close').addEventListener('click',()=>mailDialog.close());
+    mailDialog.addEventListener('click',e=>{if(e.target===mailDialog)mailDialog.close()});
+    mailDialog.addEventListener('close',()=>{if(!dialog.open&&!contactDialog.open)document.body.style.overflow=''});
+    /* Top-nav “Contact me”: show the New Message contact card right here as a dialog, instead of following the #contact anchor down the page. */
+    document.querySelector('#contact-open').addEventListener('click',e=>{e.preventDefault();if(!contactDialog.open){contactDialog.showModal();document.body.style.overflow='hidden'}});
+    document.querySelector('#contact-close').addEventListener('click',()=>contactDialog.close());
+    contactDialog.addEventListener('click',e=>{if(e.target===contactDialog)contactDialog.close()});
+    contactDialog.addEventListener('close',()=>{if(!dialog.open&&!mailDialog.open)document.body.style.overflow=''});
   </script>
 </body>
 </html>
